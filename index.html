@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>People OS for Hospitality - Early Access</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f3ef;
+      color: #222222;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .page {
+      width: 100%;
+      max-width: 900px;
+      padding: 32px 20px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px 28px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 768px) {
+      .card { grid-template-columns: minmax(0, 1fr); }
+    }
+    h1 {
+      font-size: 2rem;
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+    .sub {
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f9731615;
+      color: #9a3412;
+      font-size: 0.75rem;
+      margin-bottom: 12px;
+    }
+    .tag-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #f97316;
+    }
+    .bullets {
+      font-size: 0.9rem;
+      color: #374151;
+      margin: 0 0 10px;
+      padding-left: 18px;
+    }
+    .bullets li { margin-bottom: 4px; }
+    .hint {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 9px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+      outline: none;
+      background: #f9fafb;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #f97316;
+      background: #ffffff;
+    }
+    button {
+      margin-top: 4px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      background: #f97316;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover { background: #ea580c; }
+    .note {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-top: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div>
+        <div class="tag">
+          <span class="tag-dot"></span>
+          Early access · People OS for hospitality teams
+        </div>
+        <h1>The people-first operating system for hospitality teams.</h1>
+        <p class="sub">
+          An AI-native training & culture platform that turns messy binders into living playbooks,
+          adaptive learning paths, and real-time people insights — built for restaurants, bars, and
+          people-based businesses.
+        </p>
+        <ul class="bullets">
+          <li>Upload your existing SOPs → get clean, role-based training modules.</li>
+          <li>Scenario-based learning, ND-friendly modes, and well-being check-ins.</li>
+          <li>Managers finally see effort, progress, and early warning signs.</li>
+        </ul>
+        <p class="hint">
+          Tell us who you are and what you’d realistically budget for a tool like this — it helps us
+          prioritize early access and pricing experiments.
+        </p>
+      </div>
 
+      <div>
+        <form onsubmit="handleSubmit(event)">
+          <div>
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div>
+            <label for="role">Role (optional)</label>
+            <input id="role" name="role" type="text" placeholder="Owner, GM, Bar Lead, etc." />
+          </div>
+          <div>
+            <label for="company">Company (optional)</label>
+            <input id="company" name="company" type="text" placeholder="Restaurant / group name" />
+          </div>
+          <div>
+            <label for="budget">What price range would feel reasonable for a tool like this?</label>
+            <select id="budget" name="budget">
+              <option value="">Select one</option>
+              <option value="under_49">Under $49/month</option>
+              <option value="49_99">$49–$99/month</option>
+              <option value="99_199">$99–$199/month</option>
+              <option value="200_plus">$200+/month</option>
+            </select>
+          </div>
+          <button type="submit">Join the early access list</button>
+          <p class="note">For now, this just logs to the console — we’ll hook it to a real backend later.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const data = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        role: e.target.role.value,
+        company: e.target.company.value,
+        budget: e.target.budget.value,
+      };
+      console.log("Signup submission:", data);
+      alert("Thanks! You’re on the early access list.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
